@@ -6,7 +6,7 @@
 /*   By: iannmari <iannmari@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 12:32:55 by iannmari          #+#    #+#             */
-/*   Updated: 2022/06/10 13:04:23 by iannmari         ###   ########.fr       */
+/*   Updated: 2022/06/12 12:18:46 by iannmari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,27 +51,40 @@ void	add_env_back(t_env **head, char *key, char *value, int flag)
 	}
 }
 
+int	find_equal(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '=')
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
 void	init_env(char **envp, t_info *info)
 {
 	int		i;
 	int		j;
 	char	*key;
 	char	*value;
+	int		eq;
 
 	i = 0;
 	while (envp[i])
 	{
 		j = 0;
-		while (envp[i][j])
+		eq = find_equal(envp[i]);
+		if (eq == -1)
 		{
-			if (envp[i][j] == '=')
-			{
-				key = ft_substr(envp[i], 0, j);
-				value = ft_substr(envp[i], j+1, ft_strlen(envp[i]));
-				break ;
-			}
-			j++;
+			printf("envp error\n");
+			exit(EXIT_FAILURE);
 		}
+		key = ft_substr(envp[i], 0, eq);
+		value = ft_substr(envp[i], eq++, ft_strlen(envp[i]));
 		add_env_back(&(info->env_head), key, value, 1);
 		free_key_value(key, value);
 		i++;

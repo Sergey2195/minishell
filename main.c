@@ -6,7 +6,7 @@
 /*   By: iannmari <iannmari@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 12:02:45 by iannmari          #+#    #+#             */
-/*   Updated: 2022/06/10 19:44:42 by iannmari         ###   ########.fr       */
+/*   Updated: 2022/06/12 11:59:19 by iannmari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ int	main(int argc, char **argv, char **envp)
 	init_info(&g_info);
 	signal(SIGINT, (void *)sig);
 	signal(SIGQUIT, (void *)sig);
-	init_env(envp, &g_info);//parse_env
+	init_env(envp, &g_info);
 	while (1)
 	{
-		start(&g_info);//prompt2
+		start(&g_info);
 		executor(&g_info, g_info.cmd_head, envp);
 		prepare_token_and_cmd(&g_info);
 	}

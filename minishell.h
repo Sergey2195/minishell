@@ -6,7 +6,7 @@
 /*   By: iannmari <iannmari@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 11:56:08 by iannmari          #+#    #+#             */
-/*   Updated: 2022/06/10 19:43:29 by iannmari         ###   ########.fr       */
+/*   Updated: 2022/06/12 11:57:08 by iannmari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_env
 {
 	char			*key;
 	char			*value;
-	int				flag; //has_equal
+	int				flag;
 	struct s_env	*next;
 }					t_env;
 
